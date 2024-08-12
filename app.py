@@ -4,7 +4,7 @@ import streamlit as st
 import chromadb
 import openai
 from openai import OpenAI
-# openai.api_key = os.environ["OPENAI_API_KEY"]
+openai.api_key = os.environ["OPENAI_API_KEY"]
 
 # data prep
 chroma_client = chromadb.PersistentClient(path="db")
@@ -23,7 +23,7 @@ def rag(query, n_results=5):
         },
         {"role": "user", "content": f"Question: {query}. \n Information: {joined_information}"}
     ]
-    openai_client = OpenAI(api_key="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")
+    openai_client = OpenAI(api_key=openai.api_key)
     model = "gpt-3.5-turbo"
     response = openai_client.chat.completions.create(
         model=model,
