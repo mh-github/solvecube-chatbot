@@ -23,15 +23,15 @@ def parse_add_to_collection(pdf, collection):
     ipcc_wo_header_footer = [re.sub(r'TS\n', '', s) for s in ipcc_wo_header_footer]
 
     char_splitter = RecursiveCharacterTextSplitter(
-        separators= ["\n\n", "\n", ". ", " ", ""],
+        # separators= ["\n\n", "\n", ". ", " ", ""],
         chunk_size=1000,
-        chunk_overlap=0.2
+        chunk_overlap=100
         )
 
     texts_char_splitted = char_splitter.split_text('\n\n'.join(ipcc_wo_header_footer))
     
     token_splitter = SentenceTransformersTokenTextSplitter(
-        chunk_overlap=0.2,
+        chunk_overlap=100,
         tokens_per_chunk=256
         )
 
