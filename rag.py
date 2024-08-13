@@ -23,7 +23,7 @@ def parse_add_to_collection(pdf, collection):
     ipcc_wo_header_footer = [re.sub(r'TS\n', '', s) for s in ipcc_wo_header_footer]
 
     char_splitter = RecursiveCharacterTextSplitter(
-        # separators= ["\n\n", "\n", ". ", " ", ""],
+        separators= ["\n\n", "\n", ". ", " ", ""],
         chunk_size=1000,
         chunk_overlap=100
         )
